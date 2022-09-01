@@ -1,16 +1,10 @@
 <script>
-	import { app } from '$lib/firebase.config';
-	import { getFirestore, getDocs, collection } from 'firebase/firestore';
-
-	const db = getFirestore(app);
-
-	const collectionRef = collection(db, 'admins');
+	import {getAdmin} from "$lib/firebase/db";
 
 	(async function () {
-		const docsSnap = await getDocs(collectionRef);
-		docsSnap.forEach((doc) => {
-			console.log(doc.data());
-		});
+		const admin = await getAdmin();
+
+		console.log(admin);
 	})();
 </script>
 
